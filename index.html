@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ScamShield AI Pro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <h1>🛡️ ScamShield AI Pro</h1>
+
+  <!-- Dashboard Stats -->
+  <div class="stats">
+    <div class="card">🔍 Scans: <span id="scanCount">0</span></div>
+    <div class="card">⚠️ Threats: <span id="threatCount">0</span></div>
+    <div class="card">✅ Safe: <span id="safeCount">0</span></div>
+  </div>
+
+  <!-- Example Questions -->
+  <div class="examples">
+    <h3>💡 Try these:</h3>
+    <button onclick="fillInput('Check this link www.fakebank.com')">🔗 Check link</button>
+    <button onclick="fillInput('My OTP is 456789 is it safe?')">🔐 OTP</button>
+    <button onclick="fillInput('Call me at 9876543210 urgently')">📞 Phone</button>
+    <button onclick="fillInput('Job asking registration fee')">💼 Job scam</button>
+    <button onclick="fillInput('I won lottery do I need to pay fee?')">🎰 Lottery</button>
+  </div>
+
+  <!-- Chatbot -->
+  <div class="chat-container">
+    <div id="chatbox"></div>
+
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Paste message, link, phone number...">
+      <button onclick="sendMessage()">Send 🚀</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
