@@ -31,10 +31,8 @@ h1 {
   border-radius: 15px;
   background: rgba(0,0,0,0.4);
   text-align: center;
-  font-size: 18px;
 }
 
-/* Example buttons */
 .examples {
   text-align: center;
   margin-bottom: 15px;
@@ -43,42 +41,51 @@ h1 {
 .examples button {
   margin: 5px;
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
-  background: #ffcc00;
+  background: #ffd54f;
+  color: #000;
   font-weight: bold;
   cursor: pointer;
 }
 
 .examples button:hover {
-  background: #ffaa00;
+  background: #ffca28;
 }
 
-/* Chat UI */
 .chat-container {
-  background: rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.1);
   border-radius: 20px;
   padding: 15px;
+  backdrop-filter: blur(10px);
 }
 
 #chatbox {
   height: 350px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .user, .bot {
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
+  margin: 8px;
+  padding: 10px 14px;
+  border-radius: 15px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 14px;
 }
 
 .user {
-  background: #00eaff;
-  text-align: right;
+  background: #d1f7ff;
+  color: #000;
+  align-self: flex-end;
 }
 
 .bot {
-  background: #ff6ec7;
+  background: #f1f1f1;
+  color: #000;
+  align-self: flex-start;
 }
 
 .input-area {
@@ -89,7 +96,7 @@ h1 {
 input {
   flex: 1;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
 }
 
@@ -97,11 +104,11 @@ button {
   padding: 10px;
   margin-left: 5px;
   border: none;
-  border-radius: 10px;
-  background: #00ffcc;
+  border-radius: 20px;
+  background: #00e676;
   cursor: pointer;
 }
 
 button:hover {
-  background: #00ccaa;
+  background: #00c853;
 }
