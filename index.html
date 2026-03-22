@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ScamShield AI Pro</title>
+  <title>ScamShield</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="dashboard">
-  <h1>🛡️ ScamShield AI Pro</h1>
+  <h1>🛡️ ScamShield</h1>
 
-  <!-- Dashboard Stats -->
-  <div class="stats">
+  <!-- Stats (Hidden initially) -->
+  <div class="stats" id="statsBox" style="display:none;">
     <div class="card">🔍 Scans: <span id="scanCount">0</span></div>
     <div class="card">⚠️ Threats: <span id="threatCount">0</span></div>
     <div class="card">✅ Safe: <span id="safeCount">0</span></div>
@@ -27,7 +27,7 @@
     <button onclick="fillInput('I won lottery do I need to pay fee?')">🎰 Lottery</button>
   </div>
 
-  <!-- Chatbot -->
+  <!-- Chat -->
   <div class="chat-container">
     <div id="chatbox"></div>
 
