@@ -1,6 +1,8 @@
 let scans = 0, threats = 0, safe = 0;
 
 function updateDashboard(type) {
+  document.getElementById("statsBox").style.display = "flex";
+
   scans++;
   if(type === "threat") threats++;
   else safe++;
@@ -15,9 +17,11 @@ function sendMessage() {
   if(!input) return;
 
   addMessage(input, "user");
+
   let res = detectScam(input);
 
   setTimeout(() => addMessage(res.text, "bot"), 400);
+
   updateDashboard(res.type);
 
   document.getElementById("userInput").value = "";
@@ -32,81 +36,44 @@ function addMessage(text, sender) {
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
-/* Fill input from example buttons */
 function fillInput(text) {
   document.getElementById("userInput").value = text;
 }
 
-/* Main Scam Detection Logic */
 function detectScam(input) {
   let text = input.toLowerCase();
 
-  // Links
   if (/(http|https|www\.)/.test(text)) {
-    return {
-      text: "🔴 Phishing Link Detected! Do NOT click unknown links.",
-      type: "threat"
-    };
+    return { text: "🔴 Phishing Link Detected! Do NOT click unknown links.", type: "threat" };
   }
 
-  // Phone numbers
   if (/\d{10}/.test(text)) {
-    return {
-      text: "📞 Phone Number Detected! Unknown numbers may be scam calls.",
-      type: "threat"
-    };
+    return { text: "📞 Phone Number Detected! Unknown numbers may be scam calls.", type: "threat" };
   }
 
-  // OTP detection
   if (text.includes("otp") || /\d{4,6}/.test(text)) {
-    return {
-      text: "🔐 OTP Alert! Never share OTP codes with anyone.",
-      type: "threat"
-    };
+    return { text: "🔐 OTP Alert! Never share OTP codes with anyone.", type: "threat" };
   }
 
-  // Urgency keywords
-  if (text.includes("urgent") || text.includes("immediately") || text.includes("act now")) {
-    return {
-      text: "⚠️ Urgency detected! Scammers create panic. Stay calm & verify.",
-      type: "threat"
-    };
+  if (text.includes("urgent") || text.includes("act now")) {
+    return { text: "⚠️ Urgency detected! Scammers create panic.", type: "threat" };
   }
 
-  // Money request
-  if (text.includes("pay") || text.includes("fee") || text.includes("send money")) {
-    return {
-      text: "💰 Money Request Warning! Legit services don't ask random payments.",
-      type: "threat"
-    };
+  if (text.includes("pay") || text.includes("fee")) {
+    return { text: "💰 Money Request Warning! Legit services don't ask random payments.", type: "threat" };
   }
 
-  // Job scam
   if (text.includes("job")) {
-    return {
-      text: "💼 Job Scam Alert! Never pay for jobs.",
-      type: "threat"
-    };
+    return { text: "💼 Job Scam Alert! Never pay for jobs.", type: "threat" };
   }
 
-  // Bank scam
-  if (text.includes("bank") || text.includes("account")) {
-    return {
-      text: "🏦 Bank Scam! Banks never ask for OTP or passwords.",
-      type: "threat"
-    };
+  if (text.includes("bank")) {
+    return { text: "🏦 Bank Scam! Banks never ask for OTP or passwords.", type: "threat" };
   }
 
-  // Lottery scam
   if (text.includes("lottery") || text.includes("win")) {
-    return {
-      text: "🎰 Lottery Scam! No real prize asks fees.",
-      type: "threat"
-    };
+    return { text: "🎰 Lottery Scam! No real prize asks fees.", type: "threat" };
   }
 
-  return {
-    text: "🟢 Looks safe. Still verify unknown sources.",
-    type: "safe"
-  };
+  return { text: "🟢 Looks safe. Still verify unknown sources.", type: "safe" };
 }
